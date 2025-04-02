@@ -1,12 +1,26 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useState } from 'react';
+import Header from '../components/Header';
+import HtmlSection from '../components/HtmlSection';
+import CssSection from '../components/CssSection';
+import JavaScriptSection from '../components/JavaScriptSection';
 
 const Index = () => {
+  const [activeTab, setActiveTab] = useState('html');
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-lab-lightGray">
+      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
+      
+      <main className="container mx-auto px-4 py-8">
+        {activeTab === 'html' && <HtmlSection />}
+        {activeTab === 'css' && <CssSection />}
+        {activeTab === 'javascript' && <JavaScriptSection />}
+      </main>
+      
+      <footer className="container mx-auto px-4 py-8 text-center text-gray-500 border-t">
+        <p>Interactive Web Lab - Learn HTML, CSS, and JavaScript</p>
+      </footer>
     </div>
   );
 };
